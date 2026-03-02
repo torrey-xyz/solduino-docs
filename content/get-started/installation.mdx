@@ -1,0 +1,48 @@
+---
+title: Installation
+description: Install Solduino SDK and required dependencies.
+---
+
+# Installation
+
+## Prerequisites
+
+- Arduino IDE 1.8.13+ or PlatformIO.
+- ESP32 board package installed.
+- Active WiFi for RPC communication.
+
+## Install Solduino SDK
+
+### Arduino Library Manager
+
+1. Open Arduino IDE.
+2. Go to **Sketch -> Include Library -> Manage Libraries**.
+3. Search for `Solduino`.
+4. Install the library.
+
+### Manual Installation
+
+```bash
+git clone https://github.com/torrey-xyz/solduino.git
+cp -R sol ~/Documents/Arduino/libraries/
+```
+
+Restart Arduino IDE after copying.
+
+## Required Dependencies
+
+- `ArduinoJson` (v6.19.0+)
+- `WiFi` (ESP32 core)
+- `HTTPClient` (ESP32 core)
+- `WiFiClientSecure` (ESP32 core)
+
+## Optional Dependencies For Sensor Examples
+
+- DHT sensor library
+- Adafruit Unified Sensor
+- max6675
+- TinyGPSPlus
+
+## Verify Setup
+
+Compile `sol/examples/basic_rpc_demo/basic_rpc_demo.ino` against your target ESP32 board.

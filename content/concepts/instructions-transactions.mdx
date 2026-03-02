@@ -1,0 +1,33 @@
+---
+title: Instructions and Transactions
+description: Build Solana instructions and compose transactions.
+---
+
+# Instructions and Transactions
+
+Solduino SDK supports both high-level helpers and low-level instruction composition.
+
+## Building Blocks
+
+- `Instruction` for program id, account metas, and data encoding.
+- `Message` for accounts, recent blockhash, and compiled instructions.
+- `Transaction` for signatures + message + instruction composition.
+
+## Typical Flow
+
+1. Build one or more instructions.
+2. Add to transaction.
+3. Set recent blockhash.
+4. Sign with required keypairs.
+5. Serialize and submit using RPC.
+
+## Example
+
+```cpp
+Transaction tx;
+tx.addTransferInstruction(fromPubkey, toPubkey, 1'000'000);
+tx.setRecentBlockhash(blockhash);
+tx.sign(privateKey, fromPubkey);
+```
+
+For advanced usage, see [Custom Program Interactions](/guides/custom-programs).

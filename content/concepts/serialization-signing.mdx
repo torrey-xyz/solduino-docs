@@ -1,0 +1,30 @@
+---
+title: Serialization and Signing
+description: Encode wire-format payloads and submit signed transactions.
+---
+
+# Serialization and Signing
+
+`TransactionSerializer` converts in-memory transactions to Solana wire format.
+
+## Encodings
+
+- Raw transaction bytes.
+- Base64 transaction payload for `sendTransaction`.
+- Base58 transaction payload if required by integration paths.
+
+## Example
+
+```cpp
+char txBase64[2048];
+if (TransactionSerializer::encodeTransaction(tx, txBase64, sizeof(txBase64))) {
+  String sig = rpc.sendTransaction(String(txBase64));
+  Serial.println(sig);
+}
+```
+
+## Common Pitfalls
+
+- Missing or stale blockhash.
+- Incorrect signer list for required accounts.
+- Buffer too small for serialized payload.

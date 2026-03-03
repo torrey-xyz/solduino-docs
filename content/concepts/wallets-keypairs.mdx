@@ -1,0 +1,34 @@
+---
+title: Wallets and Keypairs
+description: Keypair lifecycle and secure key handling.
+---
+
+# Wallets and Keypairs
+
+`Keypair` provides device-side wallet operations for Solana.
+
+## Common Operations
+
+- Generate a random keypair.
+- Import from Base58 private key.
+- Import from seed bytes.
+- Export public key as Solana address.
+- Sign and verify payloads.
+
+## Example
+
+```cpp
+Keypair wallet;
+wallet.generate();
+
+char address[64];
+wallet.getPublicKeyAddress(address, sizeof(address));
+Serial.println(address);
+```
+
+## Security Guidance
+
+- Never hardcode production private keys in firmware.
+- Avoid logging private key bytes to serial output.
+- Use secure storage strategy for production devices.
+- Rotate keys used in test and staging fleets.

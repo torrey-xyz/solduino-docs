@@ -1,0 +1,34 @@
+---
+title: Solduino Core
+description: Core constants, versioning, and umbrella module includes.
+---
+
+# Solduino Core (`solduino.h`)
+
+## Version Constants
+
+- `SOLDUINO_VERSION_MAJOR`
+- `SOLDUINO_VERSION_MINOR`
+- `SOLDUINO_VERSION_PATCH`
+- `SOLDUINO_VERSION_STRING`
+
+## RPC Endpoint Constants
+
+- `SOLDUINO_MAINNET_RPC`
+- `SOLDUINO_DEVNET_RPC`
+- `SOLDUINO_TESTNET_RPC`
+- `SOLDUINO_LOCALNET_RPC`
+
+## Solduino Class
+
+- `static const char* getVersion()`
+- `static int getVersionMajor()`
+- `static int getVersionMinor()`
+- `static int getVersionPatch()`
+- `bool begin()`
+- `void end()`
+- `void hello()`
+
+## Includes
+
+`solduino.h` includes RPC, connection, crypto, keypair, instruction, transaction, serializer, and program helpers.

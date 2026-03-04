@@ -1,0 +1,27 @@
+---
+title: Instruction and AccountMeta
+description: Build instruction payloads with typed account and data encoding helpers.
+---
+
+# Instruction and AccountMeta (`instruction.h`)
+
+## AccountMeta
+
+Represents account metadata for instruction compilation:
+
+- Public key
+- Signer flag
+- Writable flag
+
+## Instruction Builder
+
+Core methods include:
+
+- `setProgram(...)`
+- `addKey(...)`
+- `writeU8(...)`, `writeU16LE(...)`, `writeU32LE(...)`, `writeU64LE(...)`
+- `writeI64LE(...)`
+- `writeBytes(...)`
+- `writePubkey(...)`
+
+Use this module when composing custom on-chain program calls from embedded devices.

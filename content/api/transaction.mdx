@@ -1,0 +1,29 @@
+---
+title: Transaction and Message
+description: Compose Solana transactions from instructions and signers.
+---
+
+# Transaction and Message (`transaction.h`)
+
+## Message
+
+- `bool addAccount(const uint8_t* pubkey, bool isSigner, bool isWritable)`
+- `bool setRecentBlockhash(const uint8_t* blockhash)`
+- `bool addInstruction(...)`
+- `void reset()`
+
+## Transaction
+
+- `bool addTransferInstruction(const uint8_t* from, const uint8_t* to, uint64_t amount)`
+- `bool addInstruction(...)`
+- `bool add(const Instruction& instruction)`
+- `bool setRecentBlockhash(const uint8_t* blockhash)`
+- `bool sign(const uint8_t* privateKey, const uint8_t* publicKey)`
+- `bool signMultiple(const uint8_t* privateKeys[], const uint8_t* publicKeys[], uint8_t count)`
+- `Message& getMessage()`
+- `void reset()`
+
+## Key Structs
+
+- `TransactionHeader`
+- `CompiledInstruction`

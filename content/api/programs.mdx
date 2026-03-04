@@ -1,0 +1,23 @@
+---
+title: SystemProgram, TokenProgram, PDA
+description: Program helper factories and PDA derivation APIs.
+---
+
+# Programs and PDA (`programs.h`)
+
+## SystemProgram Helpers
+
+Use helpers to create standard system instructions, such as transfer-oriented operations and account setup operations.
+
+## TokenProgram Helpers
+
+Use helpers for SPL token instruction construction through predefined token-program instruction builders.
+
+## Program Derived Addresses
+
+PDA utility methods:
+
+- `findProgramAddress(...)`
+- `createProgramAddress(...)`
+
+Use PDAs when device-originated transactions must target deterministic program-owned accounts.

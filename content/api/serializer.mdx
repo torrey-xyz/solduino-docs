@@ -1,0 +1,22 @@
+---
+title: Serializer and Base64
+description: Serialize messages/transactions to Solana wire format.
+---
+
+# Serializer and Base64 (`serializer.h`)
+
+## TransactionSerializer
+
+- `serializeMessage(...)`
+- `serializeTransaction(...)`
+- `encodeTransaction(...)` (Base64)
+- `encodeTransactionBase58(...)`
+- `calculateMessageSize(...)`
+- `calculateTransactionSize(...)`
+
+## Base64 Helpers
+
+- `encode(...)`
+- `decode(...)`
+
+Use these methods before passing payloads to `RpcClient::sendTransaction(...)`.

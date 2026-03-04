@@ -1,0 +1,48 @@
+---
+title: RpcClient
+description: Solana JSON-RPC operations for embedded environments.
+---
+
+# RpcClient (`rpc_client.h`)
+
+## Connection
+
+- `bool begin()`
+- `void end()`
+- `void setTimeout(int timeout)`
+
+## Network and Chain State
+
+- `String getVersion()`
+- `String getSlot()`
+- `String getBlockHeight()`
+- `String getHealth()`
+- `String getLatestBlockhash()`
+- `String getRecentBlockhash()` (deprecated in Solana RPC)
+
+## Account and Token
+
+- `String getAccountInfo(const String& publicKey)`
+- `String getBalance(const String& publicKey)`
+- `uint64_t getBalanceLamports(const String& publicKey)`
+- `String getTokenAccountsByOwner(const String& owner, const String& mint)`
+- `String getTokenSupply(const String& mint)`
+
+## Transactions
+
+- `String sendTransaction(const String& transactionBase64)`
+- `String sendTransactionBase58(const String& transactionBase58)`
+- `String getTransaction(const String& signature)`
+- `String getConfirmedTransaction(const String& signature)`
+- `String requestAirdrop(const String& publicKey, uint64_t lamports)`
+
+## Low-Level Utility
+
+- `String callRpc(const String& method, const String& params)`
+
+## Data Structures
+
+- `AccountInfo`
+- `Balance`
+- `BlockInfo`
+- `TransactionResponse`

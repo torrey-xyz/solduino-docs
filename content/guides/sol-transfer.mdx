@@ -1,0 +1,25 @@
+---
+title: SOL Transfer
+description: End-to-end SOL transfer from ESP32.
+---
+
+# SOL Transfer
+
+Use `sol/examples/transaction_demo/transfer_demo.ino` as your reference.
+
+## Workflow
+
+1. Initialize RPC and wallets.
+2. Obtain latest blockhash.
+3. Build transfer instruction.
+4. Sign transaction.
+5. Serialize to Base64.
+6. Submit and confirm signature.
+
+## Related APIs
+
+- `Transaction::addTransferInstruction`
+- `Transaction::setRecentBlockhash`
+- `Transaction::sign`
+- `TransactionSerializer::encodeTransaction`
+- `RpcClient::sendTransaction`

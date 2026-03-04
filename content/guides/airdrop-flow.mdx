@@ -1,0 +1,21 @@
+---
+title: Airdrop Flow
+description: Fund a devnet wallet and validate balances.
+---
+
+# Airdrop Flow
+
+Use the example `sol/examples/transaction_demo/airdrop_demo.ino`.
+
+## Workflow
+
+1. Generate or import a wallet.
+2. Request devnet SOL with `requestAirdrop`.
+3. Poll `getBalance` until funds are available.
+4. Continue with transaction tests.
+
+## Key Calls
+
+- `RpcClient::requestAirdrop`
+- `RpcClient::getBalance`
+- `RpcClient::getTransaction` (optional verification)

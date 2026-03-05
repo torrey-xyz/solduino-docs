@@ -1,0 +1,25 @@
+---
+title: Wallet Generate Key
+description: Utility sketch to generate wallet keys for testing.
+---
+
+# Wallet Generate Key
+
+- **Source**: [`generate_key.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/wallet_demo/generate_key.ino)
+- **Prerequisites**: ESP32 + secure handling for generated key material.
+- **Shows**: standalone key generation for local testing workflows.
+
+## Code
+
+```cpp
+Keypair keypair;
+if (keypair.generate()) {
+  char address[64];
+  keypair.getPublicKeyAddress(address, sizeof(address));
+  Serial.println(address);
+
+  char privateKey[128];
+  keypair.getPrivateKeyBase58(privateKey, sizeof(privateKey));
+  Serial.println(privateKey);
+}
+```

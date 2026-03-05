@@ -1,0 +1,25 @@
+---
+title: Wallet Demo
+description: Create/import wallets and sign messages.
+---
+
+# Wallet Demo
+
+- **Source**: [`wallet_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/wallet_demo/wallet_demo.ino)
+- **Prerequisites**: ESP32 + serial monitor.
+- **Shows**: keypair generation, Base58 conversion, signing and verification.
+
+## Code
+
+```cpp
+Keypair keypair;
+if (keypair.generate()) {
+  char address[64];
+  keypair.getPublicKeyAddress(address, sizeof(address));
+  Serial.println(address);
+}
+
+const char* TEST_PRIVATE_KEY = "YourBase58PrivateKey";
+Keypair imported;
+imported.importFromPrivateKeyBase58(TEST_PRIVATE_KEY);
+```

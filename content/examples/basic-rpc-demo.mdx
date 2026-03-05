@@ -1,0 +1,30 @@
+---
+title: Basic RPC Demo
+description: Minimal Solana RPC connectivity and read calls.
+---
+
+# Basic RPC Demo
+
+- **Source**: [`basic_rpc_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/basic_rpc_demo/basic_rpc_demo.ino)
+- **Prerequisites**: ESP32 WiFi + RPC endpoint.
+- **Shows**: client initialization, version/slot/health/account queries.
+
+## Code
+
+```cpp
+#include <WiFi.h>
+#include <solduino.h>
+
+Solduino solduino;
+RpcClient rpcClient(SOLDUINO_DEVNET_RPC);
+
+void setup() {
+  Serial.begin(115200);
+  solduino.begin();
+  rpcClient.begin();
+  rpcClient.setTimeout(15000);
+
+  Serial.println(rpcClient.getVersion());
+  Serial.println(rpcClient.getSlot());
+}
+```

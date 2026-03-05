@@ -1,0 +1,25 @@
+---
+title: Connection API
+description: Header-level connection status and utility surface.
+---
+
+# Connection API (`connection.h`)
+
+The connection module provides C-style helpers around RPC connectivity and status reporting.
+
+## Types
+
+- `ConnectionConfig`
+- `ConnectionStatus`
+- `Commitment`
+
+## Functions
+
+- `connection_init(...)`
+- `connection_get_status(...)`
+- `connection_get_slot(...)`
+- `connection_get_minimum_ledger_slot(...)`
+- `connection_get_genesis_hash(...)`
+- `connection_get_health(...)`
+
+Use this API when a procedural C-like interface is preferred over class-based usage.

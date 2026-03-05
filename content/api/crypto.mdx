@@ -1,0 +1,28 @@
+---
+title: Crypto Utilities
+description: Low-level cryptographic and Base58 utility APIs.
+---
+
+# Crypto Utilities (`crypto.h`)
+
+## Key Operations
+
+- `generateRandomSeed(...)`
+- `generateKeypair(...)`
+- `generateKeypairFromSeed(...)`
+
+## Signatures
+
+- `signMessage(...)`
+- `verifySignature(...)`
+
+## Address and Key Encoding
+
+- `base58Encode(...)`
+- `base58Decode(...)`
+- `publicKeyToAddress(...)`
+- `addressToPublicKey(...)`
+- `privateKeyToBase58(...)`
+- `base58ToPrivateKey(...)`
+
+This module is useful for advanced integrations and custom serialization workflows.

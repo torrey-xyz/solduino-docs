@@ -1,0 +1,16 @@
+export default {
+  index: "Examples Overview",
+  "basic-rpc-demo": "Basic RPC Demo",
+  "wallet-demo": "Wallet Demo",
+  "wallet-generate-key": "Wallet Generate Key",
+  "transaction-demo": "Transaction Demo",
+  "transaction-airdrop-demo": "Airdrop Demo",
+  "transaction-transfer-demo": "Transfer Demo",
+  "custom-program-demo": "Custom Program Demo",
+  "sensor-to-chain-demo": "Sensor-to-Chain Demo",
+  "gps-neo7m-demo": "GPS NEO-7M Demo",
+  "temperature-dht22-demo": "DHT22 Demo",
+  "temperature-thermistor-demo": "Thermistor Demo",
+  "temperature-thermocouple-demo": "Thermocouple Demo",
+  "air-mq135-demo": "MQ-135 Demo",
+};

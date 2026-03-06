@@ -1,0 +1,26 @@
+---
+title: Thermocouple Demo
+description: MAX6675 thermocouple temperature publishing.
+---
+
+# Thermocouple Demo
+
+- **Source**: [`temperature_thermocouple_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/temperature_thermocouple_demo/temperature_thermocouple_demo.ino)
+- **Prerequisites**: MAX6675 module and `max6675` library.
+- **Shows**: thermocouple readings, payload packing, transaction loop.
+
+## Code
+
+```cpp
+MAX6675 thermocouple(THERMO_SCK_PIN, THERMO_CS_PIN, THERMO_SO_PIN);
+
+float tempC = thermocouple.readCelsius();
+int64_t tempX100 = (int64_t)(tempC * 100.0f);
+
+Instruction ix;
+ix.setProgram(programId);
+ix.addKey(authorityPub, true, true);
+ix.addKey(dataAccountPda, false, true);
+ix.writeBytes(RECORD_DATA_DISCRIMINATOR, 8);
+ix.writeI64LE(tempX100);
+```

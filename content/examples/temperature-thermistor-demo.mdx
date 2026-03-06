@@ -1,0 +1,25 @@
+---
+title: Thermistor Demo
+description: Read thermistor values and publish temperature.
+---
+
+# Thermistor Demo
+
+- **Source**: [`temperature_thermistor_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/temperature_thermistor_demo/temperature_thermistor_demo.ino)
+- **Prerequisites**: thermistor circuit and calibration constants.
+- **Shows**: ADC read, resistance/temperature conversion, encoded chain submission.
+
+## Code
+
+```cpp
+int raw = analogRead(SENSOR_PIN);
+float resistance = SERIES_RESISTOR * ((4095.0f / (float)raw) - 1.0f);
+
+float steinhart = resistance / THERMISTOR_NOMINAL;
+steinhart = logf(steinhart);
+steinhart /= BETA_COEFFICIENT;
+steinhart += 1.0f / (TEMPERATURE_NOMINAL + 273.15f);
+steinhart = 1.0f / steinhart;
+
+int64_t tempX100 = (int64_t)((steinhart - 273.15f) * 100.0f);
+```

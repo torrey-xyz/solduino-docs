@@ -1,0 +1,26 @@
+---
+title: Transfer Demo
+description: End-to-end SOL transfer transaction example.
+---
+
+# Transfer Demo
+
+- **Source**: [`transfer_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/transaction_demo/transfer_demo.ino)
+- **Prerequisites**: funded sender wallet.
+- **Shows**: transfer instruction, signer usage, encoded payload submit, signature tracking.
+
+## Code
+
+```cpp
+Transaction tx;
+tx.addTransferInstruction(senderPubkey, receiverPubkey, 1000000); // 0.001 SOL
+
+uint8_t blockhash[BLOCKHASH_SIZE];
+rpcClient.getLatestBlockhashBytes(blockhash);
+tx.setRecentBlockhash(blockhash);
+tx.sign(senderPrivateKey, senderPubkey);
+
+char txBase64[2048];
+TransactionSerializer::encodeTransaction(tx, txBase64, sizeof(txBase64));
+String resp = rpcClient.sendTransaction(String(txBase64));
+```

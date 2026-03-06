@@ -1,0 +1,29 @@
+---
+title: Transaction Demo
+description: Full transaction lifecycle as a guided flow.
+---
+
+# Transaction Demo
+
+- **Source**: [`transaction_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/transaction_demo/transaction_demo.ino)
+- **Prerequisites**: funded wallet on devnet or localnet.
+- **Shows**: blockhash fetch, instruction composition, signing, serialization, submit, confirmation.
+
+## Code
+
+```cpp
+Transaction tx;
+Message& msg = tx.getMessage();
+
+msg.addAccount(feePayerPubkey, true, true);
+msg.addAccount(someWritableAcct, false, true);
+msg.addAccount(someReadonlyAcct, false, false);
+
+const uint8_t* ixAccounts[] = { feePayerPubkey, someWritableAcct, someReadonlyAcct };
+tx.addInstruction(programId, ixAccounts, 3, ixData, sizeof(ixData));
+
+uint8_t blockhash[BLOCKHASH_SIZE];
+rpcClient.getLatestBlockhashBytes(blockhash);
+tx.setRecentBlockhash(blockhash);
+tx.sign(feePayerPrivateKey64, feePayerPubkey32);
+```

@@ -1,0 +1,26 @@
+---
+title: Airdrop Demo
+description: Request devnet SOL and verify funding.
+---
+
+# Airdrop Demo
+
+- **Source**: [`airdrop_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/transaction_demo/airdrop_demo.ino)
+- **Prerequisites**: devnet RPC endpoint.
+- **Shows**: `requestAirdrop`, balance polling, and transaction status checks.
+
+## Code
+
+```cpp
+Keypair keypair;
+keypair.generate();
+
+char address[64];
+keypair.getPublicKeyAddress(address, sizeof(address));
+
+uint64_t initialLamports = rpcClient.getBalanceLamports(address);
+String signature = rpcClient.requestAirdrop(address, 1000000000);
+
+delay(15000);
+uint64_t newLamports = rpcClient.getBalanceLamports(address);
+```

@@ -1,0 +1,25 @@
+---
+title: Custom Program Demo
+description: Build and send custom instruction payloads.
+---
+
+# Custom Program Demo
+
+- **Source**: [`custom_program_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/custom_program_demo/custom_program_demo.ino)
+- **Prerequisites**: target program id and account layout.
+- **Shows**: instruction data encoding, account metas, multi-instruction transactions, PDA helpers.
+
+## Code
+
+```cpp
+Instruction ix;
+ix.setProgram(programId);
+ix.addKey(authorityPub, true, true);
+ix.addKey(dataAccount, false, true);
+ix.writeBytes(discriminator, 8);
+ix.writeU64LE(42);
+
+Transaction tx;
+tx.add(ix);
+tx.add(SystemProgram::transfer(authorityPub, receiverPub, 500000));
+```

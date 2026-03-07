@@ -1,0 +1,27 @@
+---
+title: GPS NEO-7M Demo
+description: Publish GPS coordinates using TinyGPSPlus.
+---
+
+# GPS NEO-7M Demo
+
+- **Source**: [`gps_neo7m_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/gps_neo7m_demo/gps_neo7m_demo.ino)
+- **Prerequisites**: NEO-7M module + TinyGPSPlus.
+- **Shows**: GPS parsing, coordinate payload encoding, periodic chain updates.
+
+## Code
+
+```cpp
+int64_t latE7 = (int64_t)(gps.location.lat() * 10000000.0);
+int64_t lngE7 = (int64_t)(gps.location.lng() * 10000000.0);
+int64_t sats = gps.satellites.isValid() ? (int64_t)gps.satellites.value() : 0;
+
+Instruction ix;
+ix.setProgram(programId);
+ix.addKey(authorityPub, true, true);
+ix.addKey(dataAccountPda, false, true);
+ix.writeBytes(RECORD_DATA_DISCRIMINATOR, 8);
+ix.writeI64LE(latE7);
+ix.writeI64LE(lngE7);
+ix.writeI64LE(sats);
+```

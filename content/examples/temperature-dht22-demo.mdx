@@ -1,0 +1,28 @@
+---
+title: DHT22 Demo
+description: Send temperature and humidity telemetry.
+---
+
+# DHT22 Demo
+
+- **Source**: [`temperature_dht22_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/temperature_dht22_demo/temperature_dht22_demo.ino)
+- **Prerequisites**: DHT22 + DHT sensor library + Adafruit Unified Sensor.
+- **Shows**: temperature/humidity reads, fixed-point conversion, telemetry transaction.
+
+## Code
+
+```cpp
+float h = dht.readHumidity();
+float t = dht.readTemperature();
+
+int64_t tempX100 = (int64_t)(t * 100.0f);
+int64_t humidityX100 = (int64_t)(h * 100.0f);
+
+Instruction ix;
+ix.setProgram(programId);
+ix.addKey(authorityPub, true, true);
+ix.addKey(dataAccountPda, false, true);
+ix.writeBytes(RECORD_DATA_DISCRIMINATOR, 8);
+ix.writeI64LE(tempX100);
+ix.writeI64LE(humidityX100);
+```

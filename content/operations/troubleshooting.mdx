@@ -1,0 +1,24 @@
+---
+title: Troubleshooting
+description: Common runtime and compile-time issues.
+---
+
+# Troubleshooting
+
+## Connection Failed
+
+- Confirm WiFi credentials and signal quality.
+- Confirm endpoint URL and network availability.
+- Increase RPC timeout.
+
+## Compilation Errors
+
+- Verify ESP32 board package is installed.
+- Verify `ArduinoJson` is installed.
+- Ensure includes use `#include <solduino.h>`.
+
+## Transaction Failures
+
+- Ensure latest blockhash is used.
+- Ensure required signers are present.
+- Ensure serialization buffer sizes are sufficient.

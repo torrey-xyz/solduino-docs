@@ -1,0 +1,26 @@
+---
+title: MQ-135 Demo
+description: Air quality telemetry from MQ-135 sensor.
+---
+
+# MQ-135 Demo
+
+- **Source**: [`air_mq135_demo.ino`](https://github.com/torrey-xyz/solduino/tree/main/examples/air_mq135_demo/air_mq135_demo.ino)
+- **Prerequisites**: MQ-135 analog wiring and calibration assumptions.
+- **Shows**: raw ADC/ppm estimate conversion and sensor telemetry transaction flow.
+
+## Code
+
+```cpp
+int raw = analogRead(SENSOR_PIN);
+float normalized = (float)raw / 4095.0f;
+int64_t ppmEstimate = (int64_t)(10.0f + normalized * 990.0f);
+
+Instruction ix;
+ix.setProgram(programId);
+ix.addKey(authorityPub, true, true);
+ix.addKey(dataAccountPda, false, true);
+ix.writeBytes(RECORD_DATA_DISCRIMINATOR, 8);
+ix.writeI64LE((int64_t)raw);
+ix.writeI64LE(ppmEstimate);
+```

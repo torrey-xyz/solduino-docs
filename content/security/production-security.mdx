@@ -1,0 +1,23 @@
+---
+title: Production Security
+description: Security practices for deploying Sol-enabled embedded systems.
+---
+
+# Production Security
+
+## Key Management
+
+- Keep private keys out of source code and logs.
+- Use secure storage mechanisms where possible.
+- Rotate operational keys and revoke compromised wallets.
+
+## Transport Security
+
+- Use HTTPS RPC endpoints.
+- Validate TLS certificates in production.
+
+## Operational Controls
+
+- Add retry/backoff for RPC calls.
+- Add monitoring and alerting for failed transactions.
+- Use least-privilege wallet separation for device fleets.

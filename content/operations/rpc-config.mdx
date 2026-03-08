@@ -1,0 +1,21 @@
+---
+title: RPC Configuration
+description: Endpoint and timeout setup for stable embedded connectivity.
+---
+
+# RPC Configuration
+
+## Built-In Endpoints
+
+- `SOLDUINO_MAINNET_RPC`
+- `SOLDUINO_DEVNET_RPC`
+- `SOLDUINO_TESTNET_RPC`
+- `SOLDUINO_LOCALNET_RPC`
+
+## Timeout Tuning
+
+Use `RpcClient::setTimeout(ms)` based on device network quality. A typical starting point is `15000`.
+
+## Local Validator
+
+For integration testing, run `solana-test-validator` and point devices to local network RPC.

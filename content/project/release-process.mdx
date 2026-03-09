@@ -1,0 +1,20 @@
+---
+title: Release Process
+description: High-level steps for docs and SDK version releases.
+---
+
+# Release Process
+
+## SDK Release
+
+1. Bump SDK versions (`library.properties`, `solduino.h`).
+2. Update `sol/CHANGELOG.md`.
+3. Tag release and publish GitHub release notes.
+
+## Docs Release
+
+1. Update relevant API/guides/examples pages.
+2. Run docs build validation.
+3. Deploy via Vercel from `docs` root.
+
+Reference: `sol/RELEASE_TAGGING_TUTORIAL.md`.

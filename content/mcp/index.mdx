@@ -1,0 +1,39 @@
+---
+title: MCP Server Overview
+description: Connect AI assistants to Solduino SDK documentation and source via MCP.
+---
+
+# Solduino MCP Server
+
+The Solduino MCP server exposes SDK documentation, module headers, and example sketches to AI assistants through the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/). Use it in Cursor, Claude Desktop, or any MCP-compatible client to get accurate answers about Solduino APIs, examples, and setup.
+
+## Endpoint
+
+The server is live at:
+
+```
+https://mcp.solduino.com/api/mcp
+```
+
+The endpoint is served over HTTPS with a Vercel-managed SSL certificate on the `mcp.solduino.com` subdomain.
+
+## Important: Use the Full Path
+
+The MCP handler lives at `/api/mcp`. The root URL (`https://mcp.solduino.com/`) returns a 404 by design — always configure clients with the full path above.
+
+## What It Provides
+
+The server gives AI tools read-only access to Solduino knowledge:
+
+- SDK module overview and known gotchas
+- Verbatim C++ header files for exact API signatures
+- Complete `.ino` example sketches from the repository
+- Keyword search across README, codebase index, and changelog
+- Full documentation file retrieval
+
+See [Tools Reference](/mcp/tools) for the complete tool list.
+
+## Next Steps
+
+1. [Configure your MCP client](/mcp/client-setup) with the endpoint URL.
+2. Ask your assistant Solduino questions — it can call `list_modules` first, then pull headers or examples as needed.

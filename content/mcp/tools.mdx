@@ -1,0 +1,54 @@
+---
+title: MCP Tools Reference
+description: Tools exposed by the Solduino MCP server.
+---
+
+# MCP Tools Reference
+
+The Solduino MCP server exposes five read-only tools. AI clients should call `list_modules` first when answering Solduino questions.
+
+## list_modules
+
+Returns an overview of the Solduino SDK: all modules, available examples, and known gotchas.
+
+**Parameters:** none
+
+## get_module_api
+
+Returns the exact C++ header file for a Solduino module — classes, method signatures, constants, and doc comments. This is the ground truth for API questions.
+
+**Parameters:**
+
+| Name | Type | Values |
+| --- | --- | --- |
+| `module` | string | `solduino`, `rpc_client`, `crypto`, `crypto_internal`, `keypair`, `transaction`, `instruction`, `programs`, `serializer` |
+
+## get_example
+
+Returns a complete, working Arduino sketch (`.ino`) from the Solduino examples directory.
+
+**Parameters:**
+
+| Name | Type | Values |
+| --- | --- | --- |
+| `name` | string | `basic_rpc_demo`, `wallet_demo`, `generate_key`, `airdrop_demo`, `transaction_demo`, `transfer_demo`, `custom_program_demo`, `sensor_to_chain_demo`, `temperature_dht22_demo`, `temperature_thermocouple_demo`, `temperature_thermistor_demo`, `air_mq135_demo`, `gps_neo7m_demo` |
+
+## search_docs
+
+Keyword search across Solduino documentation (`README.md`, `CODEBASE_INDEX.md`, `CHANGELOG.md`). Returns matching lines with surrounding context.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `query` | string | Keyword or phrase (minimum 2 characters), e.g. `airdrop` or `certificate` |
+
+## get_doc_file
+
+Fetches a full Solduino documentation file verbatim.
+
+**Parameters:**
+
+| Name | Type | Values |
+| --- | --- | --- |
+| `file` | string | `README.md`, `CODEBASE_INDEX.md`, `CHANGELOG.md` |
